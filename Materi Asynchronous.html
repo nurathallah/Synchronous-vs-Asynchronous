@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+# Materi JavaScript Asynchronous
+
+
+## 1. Callback Function dan Callback Hell
+
+### Pengertian
+
+Callback Function adalah fungsi yang dikirim sebagai argumen ke fungsi lain dan akan dipanggil setelah suatu proses selesai dijalankan. Callback merupakan salah satu cara pertama yang digunakan JavaScript untuk menangani proses asynchronous.
+
+### Penjelasan
+
+Pada proses asynchronous, JavaScript tidak perlu menunggu suatu pekerjaan selesai sebelum menjalankan kode berikutnya. Sebagai gantinya, JavaScript akan menjalankan callback ketika proses tersebut telah selesai. Meskipun sederhana, penggunaan callback yang terlalu banyak dan bersarang dapat menyebabkan Callback Hell, yaitu kondisi ketika kode menjadi panjang, sulit dibaca, dan sulit dipelihara.
+
+### Penggunaan
+
+* Menjalankan fungsi setelah proses selesai.
+* Mengatur proses asynchronous.
+* Digunakan pada event, timer, dan operasi I/O.
+
+### Cara Menjalankan
+
+Buat fungsi utama yang menerima callback sebagai parameter, kemudian buat fungsi callback yang akan dipanggil. Setelah itu jalankan file menggunakan browser atau Node.js.
+
+---
+
+# 2. Promise: Konsep dan Cara Membuatnya
+
+### Pengertian
+
+Promise adalah objek di JavaScript yang digunakan untuk menangani proses asynchronous dan mewakili hasil yang akan tersedia di masa mendatang.
+
+### Penjelasan
+
+Promise dibuat untuk menggantikan callback yang terlalu kompleks. Promise memiliki tiga keadaan, yaitu **Pending** (masih diproses), **Fulfilled** (berhasil), dan **Rejected** (gagal). Dengan Promise, kode menjadi lebih mudah dibaca dan lebih terstruktur.
+
+### Penggunaan
+
+* Mengambil data dari API.
+* Membaca file.
+* Menjalankan proses asynchronous lainnya.
+
+### Cara Menjalankan
+
+Buat Promise menggunakan `new Promise()`, kemudian gunakan `resolve()` jika berhasil dan `reject()` jika gagal. Hasilnya diproses menggunakan `.then()` dan `.catch()`.
+
+---
+
+# 3. Promise: then(), catch(), dan finally()
+
+### Pengertian
+
+`then()`, `catch()`, dan `finally()` adalah metode yang digunakan untuk menangani hasil dari Promise.
+
+### Penjelasan
+
+* **then()** digunakan ketika Promise berhasil.
+* **catch()** digunakan ketika Promise mengalami kesalahan.
+* **finally()** selalu dijalankan setelah Promise selesai, baik berhasil maupun gagal.
+
+Metode-metode ini membuat penanganan hasil Promise menjadi lebih mudah dibandingkan menggunakan callback.
+
+### Penggunaan
+
+* Mengolah data hasil Promise.
+* Menangani kesalahan.
+* Menjalankan proses penutup seperti menyembunyikan loading.
+
+### Cara Menjalankan
+
+Buat Promise, lalu panggil `.then()`, `.catch()`, dan `.finally()` sesuai kebutuhan.
+
+---
+
+# 4. Promise.all(), race(), allSettled(), dan any()
+
+
+### Pengertian
+
+Keempat metode ini digunakan untuk mengelola beberapa Promise secara bersamaan.
+
+### Penjelasan
+
+* **Promise.all()** menunggu semua Promise berhasil.
+* **Promise.race()** mengambil Promise yang selesai paling cepat.
+* **Promise.allSettled()** menunggu seluruh Promise selesai tanpa memperhatikan berhasil atau gagal.
+* **Promise.any()** mengambil Promise pertama yang berhasil.
+
+Metode-metode ini sangat berguna ketika aplikasi menjalankan banyak proses asynchronous sekaligus.
+
+### Penggunaan
+
+* Menjalankan beberapa permintaan data.
+* Menggabungkan hasil beberapa Promise.
+* Memilih hasil Promise tercepat.
+
+### Cara Menjalankan
+
+Buat beberapa Promise kemudian jalankan salah satu metode sesuai kebutuhan.
+
+---
+
+# 5. Promise.withResolvers (ES2024)
+
+### Pengertian
+
+Promise.withResolvers() adalah fitur baru pada JavaScript ES2024 yang menghasilkan Promise beserta fungsi `resolve` dan `reject` secara terpisah.
+
+### Penjelasan
+
+Sebelumnya, fungsi `resolve` dan `reject` hanya bisa digunakan di dalam constructor Promise. Dengan fitur ini, keduanya dapat digunakan di luar Promise sehingga penulisan kode menjadi lebih sederhana dan fleksibel.
+
+### Penggunaan
+
+* Membuat Promise yang lebih mudah dikelola.
+* Digunakan pada aplikasi yang memiliki banyak proses asynchronous.
+
+### Cara Menjalankan
+
+Panggil `Promise.withResolvers()`, kemudian gunakan `resolve()` atau `reject()` ketika diperlukan.
+
+---
+
+# 6. Async dan Await di JavaScript
+
+### Pengertian
+
+Async dan Await adalah fitur JavaScript yang digunakan untuk menjalankan Promise dengan sintaks yang lebih sederhana dan mudah dipahami.
+
+### Penjelasan
+
+Keyword **async** digunakan untuk membuat fungsi asynchronous, sedangkan **await** digunakan untuk menunggu Promise selesai sebelum melanjutkan ke baris berikutnya. Dengan cara ini, kode terlihat seperti program biasa meskipun berjalan secara asynchronous.
+
+### Penggunaan
+
+* Mengambil data dari API.
+* Membaca database.
+* Menggantikan penggunaan `.then()` yang panjang.
+
+### Cara Menjalankan
+
+Tambahkan keyword `async` pada fungsi, kemudian gunakan `await` saat memanggil Promise.
+
+---
+
+# 7. Error Handling di Async Function
+
+### Pengertian
+
+Error Handling adalah proses menangani kesalahan yang terjadi pada fungsi asynchronous.
+
+### Penjelasan
+
+Kesalahan pada Promise dapat menyebabkan program berhenti jika tidak ditangani. Oleh karena itu digunakan blok `try...catch` agar program tetap berjalan dan dapat memberikan informasi mengenai kesalahan yang terjadi.
+
+### Penggunaan
+
+* Menangani kesalahan jaringan.
+* Menangani kesalahan server.
+* Mencegah aplikasi berhenti secara tiba-tiba.
+
+### Cara Menjalankan
+
+Letakkan kode yang berpotensi menghasilkan error di dalam blok `try`, kemudian tangani kesalahan pada blok `catch`.
+
+---
+
+# 8. Event Loop dan Cara Kerjanya
+
+### Pengertian
+
+Event Loop adalah mekanisme JavaScript yang mengatur kapan kode asynchronous dijalankan.
+
+### Penjelasan
+
+JavaScript menggunakan satu thread utama untuk menjalankan program. Ketika ada proses asynchronous seperti timer atau fetch, proses tersebut dipindahkan ke Web API. Setelah selesai, callback akan masuk ke Callback Queue dan dijalankan ketika Call Stack kosong. Mekanisme inilah yang disebut Event Loop.
+
+### Penggunaan
+
+* Menjalankan callback.
+* Mengatur Promise.
+* Mengelola operasi asynchronous.
+
+### Cara Menjalankan
+
+Jalankan program yang berisi kode synchronous dan asynchronous, kemudian perhatikan urutan hasilnya pada console.
+
+---
+
+# 9. Timer: setTimeout() dan setInterval()
+
+### Pengertian
+
+Timer adalah fitur JavaScript yang digunakan untuk menjalankan kode berdasarkan waktu tertentu.
+
+### Penjelasan
+
+* **setTimeout()** menjalankan fungsi satu kali setelah waktu yang ditentukan.
+* **setInterval()** menjalankan fungsi secara berulang sesuai interval waktu yang diberikan.
+
+### Penggunaan
+
+* Membuat countdown.
+* Menampilkan notifikasi.
+* Membuat animasi.
+* Auto refresh.
+
+### Cara Menjalankan
+
+Panggil `setTimeout()` atau `setInterval()` dengan menentukan fungsi dan waktu dalam satuan milidetik.
+
+---
+
+# 10. Fetch API: Ambil Data dari Server
+
+### Pengertian
+
+Fetch API adalah fitur JavaScript yang digunakan untuk mengambil data dari server melalui HTTP.
+
+### Penjelasan
+
+Fetch mengembalikan Promise sehingga dapat digunakan bersama `.then()` maupun `async/await`. Data yang diterima umumnya berbentuk JSON sehingga perlu diubah menggunakan `response.json()`.
+
+### Penggunaan
+
+* Mengambil data pengguna.
+* Menampilkan daftar produk.
+* Mengakses layanan web (Web API).
+
+### Cara Menjalankan
+
+Gunakan fungsi `fetch()` dengan alamat URL server, kemudian ubah hasilnya menjadi JSON.
+
+---
+
+# 11. Fetch: POST, PUT, PATCH, dan DELETE
+
+### Pengertian
+
+POST, PUT, PATCH, dan DELETE merupakan metode HTTP yang digunakan untuk mengirim atau mengubah data pada server.
+
+### Penjelasan
+
+* **POST** digunakan untuk menambah data baru.
+* **PUT** digunakan untuk mengganti seluruh data.
+* **PATCH** digunakan untuk memperbarui sebagian data.
+* **DELETE** digunakan untuk menghapus data.
+
+### Penggunaan
+
+Digunakan pada aplikasi CRUD (Create, Read, Update, Delete).
+
+### Cara Menjalankan
+
+Gunakan `fetch()` dengan menentukan metode HTTP pada properti `method`.
+
+---
+
+# 12. Error Handling Fetch dan Network
+
+### Pengertian
+
+Error Handling Fetch adalah cara menangani kesalahan ketika mengambil atau mengirim data ke server.
+
+### Penjelasan
+
+Kesalahan dapat terjadi karena koneksi internet terputus, alamat server salah, atau server mengalami gangguan. Penanganan error dapat dilakukan menggunakan `.catch()` atau `try...catch` agar aplikasi tetap berjalan dengan baik.
+
+### Penggunaan
+
+* Menampilkan pesan kesalahan kepada pengguna.
+* Mencegah aplikasi berhenti.
+* Mempermudah proses debugging.
+
+### Cara Menjalankan
+
+Tambahkan `.catch()` pada Promise Fetch atau gunakan `try...catch` ketika memakai `async/await`.
+
+---
+
+# Contoh Kode
+
+**Pada bagian ini letakkan seluruh contoh kode untuk setiap materi secara berurutan, mulai dari Callback Function hingga Error Handling Fetch dan Network.**
+
+<script>
+    
+//1. Callback Function
+function salam(nama, callback) {
+    console.log("Halo " + nama);
+    callback();
+}
+
+function selesai() {
+    console.log("Program selesai.");
+}
+
+salam("Ardiansyah", selesai);
+
+//2. Callback Hell
+function ambilData(callback) {
+    setTimeout(() => {
+        console.log("Data berhasil diambil");
+        callback("Data");
+    }, 1000);
+}
+
+function prosesData(data, callback) {
+    setTimeout(() => {
+        console.log("Data diproses");
+        callback(data + " telah diproses");
+    }, 1000);
+}
+
+function simpanData(data, callback) {
+    setTimeout(() => {
+        console.log("Data disimpan");
+        callback();
+    }, 1000);
+}
+
+ambilData(function(data) {
+    prosesData(data, function(hasil) {
+        simpanData(hasil, function() {
+            console.log("Selesai");
+        });
+    });
+});
+
+//3.Promise: Konsep dan Cara Membuatnya
+const janji1 = new Promise((resolve, reject) => {
+
+    let sukses = true;
+
+    if (sukses) {
+        resolve("Data berhasil diambil");
+    } else {
+        reject("Terjadi kesalahan");
+    }
+
+});
+
+console.log(janji1);
+
+//4.Promise: then(), catch(), dan finally()
+const janji2 = new Promise((resolve, reject) => {
+
+    let sukses = true;
+
+    if (sukses) {
+        resolve("Berhasil");
+    } else {
+        reject("Gagal");
+    }
+
+});
+
+janji2
+.then((hasil) => {
+    console.log(hasil);
+})
+.catch((error) => {
+    console.log(error);
+})
+.finally(() => {
+    console.log("Program selesai.");
+});
+
+
+//5.Promise.all()
+const p1 = Promise.resolve("Data 1");
+const p2 = Promise.resolve("Data 2");
+
+Promise.all([p1, p2])
+.then((hasil) => {
+    console.log(hasil);
+});
+
+
+//6.Promise.race()
+const cepat = new Promise((resolve) => {
+    setTimeout(() => resolve("Promise tercepat"), 1000);
+});
+
+const lambat = new Promise((resolve) => {
+    setTimeout(() => resolve("Promise lambat"), 3000);
+});
+
+Promise.race([cepat, lambat])
+.then(console.log);
+
+
+
+//7.Promise.allSettled()
+const p3 = Promise.resolve("Berhasil");
+const p4 = Promise.reject("Gagal");
+
+Promise.allSettled([p3, p4])
+.then((hasil) => {
+    console.log(hasil);
+});
+
+
+//8.Promise.any()
+const p5 = Promise.reject("Error");
+const p6 = Promise.resolve("Berhasil");
+
+Promise.any([p5, p6])
+.then((hasil) => {
+    console.log(hasil);
+});
+
+
+//9.Promise.withResolvers() (ES2024)
+const { promise, resolve, reject } = Promise.withResolvers();
+
+promise.then((hasil) => {
+    console.log(hasil);
+});
+
+resolve("Promise berhasil!");
+
+
+
+//10.Async dan Await
+function ambilData() {
+
+    return new Promise((resolve) => {
+
+        setTimeout(() => {
+            resolve("Data berhasil diambil");
+        }, 2000);
+
+    });
+
+}
+
+async function tampilkanData() {
+
+    const hasil = await ambilData();
+
+    console.log(hasil);
+
+}
+
+tampilkanData();
+
+
+//11.Error Handling di Async Function
+async function contohError() {
+
+    try {
+
+        throw new Error("Terjadi kesalahan");
+
+    } catch (error) {
+
+        console.log(error.message);
+
+    }
+
+}
+
+contohError();
+
+
+//12.Event Loop dan Cara Kerjanya
+console.log("Awal");
+
+setTimeout(() => {
+    console.log("Timeout");
+}, 0);
+
+console.log("Akhir");
+
+
+//13.Timer: setTimeout()
+setTimeout(() => {
+    console.log("Halo setelah 3 detik");
+}, 3000);
+
+
+//14.Timer: setInterval()
+const id = setInterval(() => {
+    console.log("Belajar JavaScript");
+}, 1000);
+
+setTimeout(() => {
+    clearInterval(id);
+    console.log("Interval dihentikan");
+}, 5000);
+
+
+//15.Fetch API: Ambil Data dari Server (GET)
+fetch("https://jsonplaceholder.typicode.com/users")
+.then((response) => response.json())
+.then((data) => {
+    console.log(data);
+})
+.catch((error) => {
+    console.log(error);
+});
+
+
+//16.Fetch API: POST
+fetch("https://jsonplaceholder.typicode.com/posts", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        title: "Belajar JavaScript",
+        body: "Materi Asynchronous",
+        userId: 1
+    })
+})
+.then((response) => response.json())
+.then((data) => {
+    console.log(data);
+});
+
+
+
+//17.Fetch API: PUT
+fetch("https://jsonplaceholder.typicode.com/posts/1", {
+    method: "PUT",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        id: 1,
+        title: "Judul Baru",
+        body: "Isi Baru",
+        userId: 1
+    })
+})
+.then((response) => response.json())
+.then((data) => {
+    console.log(data);
+});
+
+
+//18.Fetch API: PATCH
+fetch("https://jsonplaceholder.typicode.com/posts/1", {
+    method: "PATCH",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        title: "Judul Diperbarui"
+    })
+})
+.then((response) => response.json())
+.then((data) => {
+    console.log(data);
+});
+
+
+//19.Fetch API: DELETE
+fetch("https://jsonplaceholder.typicode.com/posts/1", {
+    method: "DELETE"
+})
+.then((response) => {
+    console.log("Status:", response.status);
+});
+
+
+//20.Error Handling Fetch dan Network
+
+fetch("https://alamat-salah.com")
+.then((response) => response.json())
+.then((data) => {
+    console.log(data);
+})
+.catch((error) => {
+    console.log("Terjadi kesalahan:", error.message);
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
